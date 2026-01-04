@@ -1,5 +1,5 @@
 # python-sdk
 
-A python sdk for algorithmic traders of Predict Ontario.
+A python sdk for algorithmic prediction traders.
 
 Coming soon™
