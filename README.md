@@ -6,17 +6,14 @@ Python client library for the Toronto Prediction Exchange (TPX). Implements the 
 
 ## Installation
 
-```bash
-pip install -e sdk/python
-```
-
-Or copy the `tpx/` directory into your project.
+Copy the `tpx/` directory into your project.
 
 ## Quick Start
 
 ```python
 from tpx import TpxClient
 
+# Message admin to get host, port, key, and secret
 client = TpxClient(
     host="127.0.0.1",
     port=9000,
