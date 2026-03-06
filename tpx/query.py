@@ -96,9 +96,11 @@ class TpxQueryClient:
         self,
         base_url: str = "http://127.0.0.1:9002",
         timeout: float = 5.0,
+        api_key: Optional[str] = None,
     ):
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
+        self.api_key = api_key
 
     def get_orders(
         self,
@@ -166,6 +168,8 @@ class TpxQueryClient:
         if params:
             url += "?" + urllib.parse.urlencode(params)
         req = urllib.request.Request(url, method="GET")
+        if self.api_key:
+            req.add_header("Authorization", f"Bearer {self.api_key}")
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                 return json.loads(resp.read().decode())

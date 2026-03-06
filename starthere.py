@@ -55,10 +55,17 @@ client.disconnect()
 
 # ── Query API usage (uncomment to try) ────────────────────────────────────────
 #
-# qc = TpxQueryClient(base_url=QUERY_API_URL)
+# qc = TpxQueryClient(base_url=QUERY_API_URL, api_key=API_KEY)
 # orders = qc.get_orders(contract_id=1)
 # for o in orders:
 #     print(f"{o.side} {o.outcome} {o.remaining_quantity}@{o.price}")
+
+qc = TpxQueryClient(base_url=QUERY_API_URL, api_key=API_KEY)
+book = qc.get_book(contract_id=1)
+print(f"Buy Yes:  {[(l.price, l.quantity) for l in book.buy_yes]}")
+print(f"Sell Yes: {[(l.price, l.quantity) for l in book.sell_yes]}")
+print(f"Buy No:   {[(l.price, l.quantity) for l in book.buy_no]}")
+print(f"Sell No:  {[(l.price, l.quantity) for l in book.sell_no]}")
 
 # ── Market data usage (uncomment to try) ──────────────────────────────────────
 #
